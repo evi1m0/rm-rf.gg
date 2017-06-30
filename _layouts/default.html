@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>{{ page.title }}</title>
-  </head>
+
+  {% include head.html %}
+
   <body>
-    {{ content }}
+
+    {% include header.html %}
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="col-main">
+          {{ content }}
+        </div>
+        <div class="col-second">
+          {% include sidebar.html %}
+        </div>
+      </div>
+    </div>
+
+    {% include footer.html %}
+
   </body>
+
 </html>
