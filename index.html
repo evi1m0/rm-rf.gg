@@ -9,27 +9,27 @@ layout: default
   <ul class="post-list">
     {% for post in paginator.posts %}
       <li>
-        <h2>
-          <a class="post-link" href="{{ post.url }}">{{ post.title }}</a>
-        </h2>
-        <div class="post-meta">{{ post.date | date: "%m/%d %Y" }}
-        </div>
+        <h3>
+          <a class="post-link" href="{{ post.url }}">{{ post.title | truncate: 60, "..."}}</a>
+          <div class="post-meta">{{ post.date | date: "%m/%d %Y" }}</div>
+        </h3>
       </li>
     {% endfor %}
   </ul>
-
-<div class="pagination">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path }}" class="previous">PREV</a>
-  {% else %}
-    <span class="previous">PREV</span>
-  {% endif %}
-  <span class="page_number ">{{ paginator.page }} of {{ paginator.total_pages }}</span>
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path }}" class="next">NEXT</a>
-  {% else %}
-    <span class="next ">NEXT</span>
-  {% endif %}
-</div>
+  <!--
+  <div class="pagination">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path }}" class="previous">PREV</a>
+    {% else %}
+      <span class="previous">PREV</span>
+    {% endif %}
+    <span class="page_number ">{{ paginator.page }} of {{ paginator.total_pages }}</span>
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path }}" class="next">NEXT</a>
+    {% else %}
+      <span class="next ">NEXT</span>
+    {% endif %}
+  </div>
+  -->
 
 </div>

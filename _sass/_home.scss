@@ -26,9 +26,7 @@
 	padding: 20px 40px;
     list-style: none;
     > li {
-        padding-bottom: 10px;
         border-bottom: 1px solid #CCC;
-       	margin-bottom: 10px;
     }
     .post-title {
     	font-size: 28px;
@@ -36,11 +34,10 @@
     	margin: 0;
     }
     .post-meta {
-    	font-size: $small-font-size;
-    	color: #666;
-        margin: 0 20px;
-        margin-bottom: .5em;
-        margin-top: -10px;
+      font-size: 14px;
+      color: #666;
+      margin-top: 8px;
+      float: right;
     }
     .post-excerpt {
         &, * {
