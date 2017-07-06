@@ -21,9 +21,9 @@ gems:
 paginate: 1000
 paginate_path: "page:num"
 
-# highlighter: rouge
+highlighter: rouge
 markdown: kramdown
 
 kramdown:
   input: GFM
-  # syntax_highlighter: rouge
+  syntax_highlighter: rouge
