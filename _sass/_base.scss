@@ -37,11 +37,12 @@ pre {
 	padding: 20px 50px;
 }
 pre, pre code {
-	color: #fafafa;
-	background-color: #3a3a3a;
+  color: #333;
+  font-size: 12px;
+  background-color: #c6e4f
 }
 pre code {
-	padding: 0;	
+	padding: 0;
 }
 .hide {
     display: none;
