@@ -27,9 +27,10 @@ code,pre {
 	font-size: $code-font-size;
 }
 code {
-	color: #333;
-	background-color: #eee;
+	color: #fff;
+	background-color: rgb(88, 88, 88);
 	padding: 2px 5px;
+  border-radius: 2px;
 }
 pre {
 	overflow-x: auto;
