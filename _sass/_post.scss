@@ -37,7 +37,7 @@
             border-bottom: 1px solid #CCC;
         }
         pre {
-        	  /*margin: 0 -30px;*/
+            padding: 10px;
             @include media-query($on-palm) {
 		        margin: 0 -10px;
             }
