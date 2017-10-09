@@ -6,7 +6,9 @@ title: 原本丢掉的跨站漏洞 - JavaScript 特性利用
 
 今天睡醒后我想到之前的“漏洞”好像可以利用特性让它变成真的漏洞，简单说下功能点。我在测试越权操作的过程中发现未登录的情况下访问创建主题的 URL 站点会进行跳转，为了看清源码使用 View-Source ，这里发现可控点为 c 参数。
 
-[view-source:masaike/ThemeCreator/index.aspx?c=QAQ)QAQ(QAQ](view-source:masaike/ThemeCreator/index.aspx?c=QAQ\)QAQ\(QAQ)    <script type="text/javascript">
+[view-source:masaike/ThemeCreator/index.aspx?c=QAQ)QAQ(QAQ](view-source:masaike/ThemeCreator/index.aspx?c=QAQ\)QAQ\(QAQ)
+
+    <script type="text/javascript">
     window.open('/login.aspx?burl=http%3a%2f%2fmasaike%2fThemeCreator%2findex.aspx%3fc%3dQAQ)QAQ(QAQ','_top');
     </script>
 
