@@ -1,4 +1,4 @@
-title: rm -rf /
+title: rm-rf.gg# ls -alh
 baseurl: "/"
 description: em....... //:\'<->'/ evi1m0 blog
 #email: evi1m0.bat@gmail.com
@@ -13,12 +13,12 @@ disqus_shortname: evi1m0   # get one: https://disqus.com/admin/signup/
 #duoshuo_shortname: xxx  # get one: http://duoshuo.com/create-site/
 #permalink: /archivers/:title
 gems:
- - jekyll-paginate
- - jekyll-gist
- - jemoji
+- jekyll-paginate
+- jekyll-gist
+- jemoji
 
 # Build settings
-paginate: 1000
+paginate: 15
 paginate_path: "page:num"
 
 highlighter: rouge
